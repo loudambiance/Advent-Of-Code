@@ -1,8 +1,7 @@
 test = False
-day = '1'
-path = "input" + day
+path = "input"
 
-file = path+"ex.txt" if test else path+".txt"
+file = "input_ex.txt" if test else "input.txt"
 
 with open(file) as f:
     lines = f.read().splitlines()
