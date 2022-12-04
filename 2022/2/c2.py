@@ -1,6 +1,6 @@
 
 
-def main(lines):
+def main(lines: str):
     score = 0
     for line in lines:
         player1 = line.split(' ')[0]
@@ -9,7 +9,7 @@ def main(lines):
     return(score)
 
 
-def getScore(player1, player2):
+def getScore(player1: list, player2: list):
     score = 0
     # Rock = A,M, Paper = B,N, Scissors = C,O
     options = {"A": 1, "B": 2, "C": 3, "M": 1, "N": 2, "O": 3}

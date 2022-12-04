@@ -1,4 +1,4 @@
-def main(lines):
+def main(lines: str):
     return(0)
 
 
