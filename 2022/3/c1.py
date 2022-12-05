@@ -1,5 +1,6 @@
 from time import perf_counter_ns
 
+
 def main(lines: str):
     runningsum = 0
     for line in lines:
@@ -8,10 +9,10 @@ def main(lines: str):
         sacpocket2 = sac[len(sac)//2:]
         for duplicate in set(sacpocket1).intersection(sacpocket2):
             value = ord(duplicate)
-            if value in range(65,91):
+            if value in range(65, 91):
                 value -= 38
-            elif value in range(97,123):
-                value -= 96 
+            elif value in range(97, 123):
+                value -= 96
             runningsum += value
     return(runningsum)
 

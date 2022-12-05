@@ -1,5 +1,6 @@
 from time import perf_counter_ns
 
+
 def main(lines: str):
     score = 0
     for line in lines:

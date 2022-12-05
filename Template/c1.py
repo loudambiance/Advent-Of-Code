@@ -1,5 +1,6 @@
 from time import perf_counter_ns
 
+
 def main(lines: str):
     return(0)
 
