@@ -34,4 +34,4 @@ if __name__ == "__main__":
             lines = f.read().splitlines()
         print(file + ": " + str(main(lines)))
         t1_stop = perf_counter_ns()
-        print(file + " Elapsed time:", t1_stop - t1_start)
+        print(file + " Elapsed time:", (t1_stop - t1_start)/1000000000)
