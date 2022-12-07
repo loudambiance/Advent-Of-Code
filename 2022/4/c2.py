@@ -1,7 +1,7 @@
 from time import perf_counter_ns
 
 
-def main(lines: str):
+def main(lines: list[str]):
     count = 0
     for line in lines:
         elfassign1 = line.split(',')[0].split('-')

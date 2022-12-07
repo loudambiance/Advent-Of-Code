@@ -2,7 +2,7 @@ from time import perf_counter_ns
 from textwrap import wrap
 
 
-def main(lines: str):
+def main(lines: list[str]):
     parseddata = dict()
     moves = list()
     parsestacks = True

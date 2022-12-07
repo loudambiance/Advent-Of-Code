@@ -1,7 +1,7 @@
 from time import perf_counter_ns
 
 
-def main(lines: str):
+def main(lines: list[str]):
     runningsum = 0
     for line1, line2, line3 in zip(*[iter(lines)]*3):
         sac = [*line1]

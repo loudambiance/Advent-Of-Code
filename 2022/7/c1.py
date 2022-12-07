@@ -1,7 +1,7 @@
 from time import perf_counter_ns
 
 
-def main(lines: str):
+def main(lines: list[str]):
     currentpath = list('/')
     directorystruct = dict()
     directorystruct['/'] = 0

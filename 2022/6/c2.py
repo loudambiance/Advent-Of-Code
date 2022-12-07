@@ -1,7 +1,7 @@
 from time import perf_counter_ns
 
 
-def main(lines: str):
+def main(lines: list[str]):
     for line in lines:
         for x in range(0, len([*line])-1):
             if len(set([*line][x:x+14])) == 14:
