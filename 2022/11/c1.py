@@ -1,7 +1,5 @@
 from time import perf_counter_ns
 import math
-import pprint
-pp = pprint.PrettyPrinter(indent=4)
 
 
 def main(lines: list[str]):
