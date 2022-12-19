@@ -1,46 +1,68 @@
 from time import perf_counter_ns
+from copy import deepcopy
 
 
 def main(lines: list[str]):
-    index = 0
     retval = 0
-    for x in range(0,len(lines),3):
-        index += 1
-        templist = eval(lines[x])
-        templist2 = eval(lines[x+1])
-        if compare(templist,templist2) == 0:
-            retval += index
-    return(retval)
+    sorted = list()
+    for line in lines:
+        if len(line) == 0:
+            continue
+        if len(sorted) == 0:
+            sorted.append(eval(line))
+            continue
+        sorted = sort(sorted, eval(line))
+    sorted = sort(sorted, eval("[[2]]"))
+    sorted = sort(sorted, eval("[[6]]"))
+    sorted.reverse()
+    retval = (sorted.index([[2]])+1)*(sorted.index([[6]])+1)
+    return (retval)
+
+
+def sort(sorted: list, newitem: list):
+    for index, sortedline in enumerate(sorted):
+        temp = compare(sortedline, newitem)
+        if temp == -1:
+            sorted.insert(index, newitem)
+            break
+        elif temp == 0:
+            sorted.insert(index+1, newitem)
+            break
+    else:
+        sorted.append(newitem)
+
+    return sorted
 
 
 def compare(left, right):
-    retval = 2
-    if isinstance(left,int) and isinstance(right, int):
-        if left < right:
+    localleft = deepcopy(left)
+    localright = deepcopy(right)
+    retval = 1
+    if isinstance(localleft, int) and isinstance(localright, int):
+        if localleft < localright:
+            retval = -1
+        elif localleft == localright:
             retval = 0
-        elif left == right:
-            retval = 1
         else:
-            retval = 2
-    elif isinstance(left, list) and isinstance(right, list):
-        if len(left) == 0 and len(right) > 0:
+            retval = 1
+    elif isinstance(localleft, list) and isinstance(localright, list):
+        if len(localleft) == 0 and len(localright) > 0:
+            retval = -1
+        elif len(localright) == 0 and len(localleft) > 0:
+            retval = 1
+        elif len(localright) == 0 and len(localleft) == 0:
             retval = 0
-        elif len(right) == 0 and len(left) > 0:
-            retval = 2
-        elif len(right) == 0 and len(left) == 0:
-            retval = 1
         else:
-            temp = compare(left.pop(0), right.pop(0))
-            if temp == 1:
-                retval = compare(left, right)
+            temp = compare(localleft.pop(0), localright.pop(0))
+            if temp == 0:
+                retval = compare(localleft, localright)
             else:
                 retval = temp
-    elif isinstance(left, int) and isinstance(right, list):
-        retval = compare([left], right)
-    elif isinstance(left, list) and isinstance(right, int):
-        retval = compare(left, [right])
+    elif isinstance(localleft, int) and isinstance(localright, list):
+        retval = compare([localleft], localright)
+    elif isinstance(left, list) and isinstance(localright, int):
+        retval = compare(localleft, [localright])
     return retval
-        
 
 
 if __name__ == "__main__":
