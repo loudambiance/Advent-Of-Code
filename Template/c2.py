@@ -2,7 +2,8 @@ from time import perf_counter_ns
 
 
 def main(lines: list[str]):
-    return(0)
+    validation = 0
+    return (validation)
 
 
 if __name__ == "__main__":
@@ -11,6 +12,7 @@ if __name__ == "__main__":
         t1_start = perf_counter_ns()
         with open(file) as f:
             lines = f.read().splitlines()
-        print(file + ": " + str(main(lines)))
+        output = str(main(lines))
         t1_stop = perf_counter_ns()
-        print(file + " Elapsed time:", (t1_stop - t1_start)/1000000000)
+        print(file + ": "+output + "\tElapsed time:",
+              (t1_stop - t1_start)/1000000000)
